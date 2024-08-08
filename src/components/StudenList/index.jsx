@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./StudenList.css";
+import Item from "../Item";
 
-export default function StudenList() {
+export default function StudenList({ students, deleteStudent }) {
   // let count = 0;
 
   // const [count, setCount] = useState(0);
@@ -18,16 +19,7 @@ export default function StudenList() {
   //   setCount(0);
   // };
 
-  const [students, setStudent] = useState([
-    { id: 1, name: "ง้อง" },
-    { id: 2, name: "โจโจ้" },
-    { id: 3, name: "โจ้จริง" },
-  ]);
   const [show, setShow] = useState(true);
-
-  const deleteStudent = (id) => {
-    setStudent(students.filter((value) => value.id !== id));
-  };
 
   return (
     <>
@@ -48,17 +40,7 @@ export default function StudenList() {
         </div>
         {show &&
           students.map((value, index) => (
-            <li key={index}>
-              <p>
-                {value.id} - {value.name}
-              </p>
-              <button
-                className="delete"
-                onClick={() => deleteStudent(value.id)}
-              >
-                ลบ
-              </button>
-            </li>
+            <Item key={index} data={value} deleteStudent={deleteStudent} />
           ))}
       </ul>
     </>
