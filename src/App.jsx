@@ -1,13 +1,9 @@
 import { useState } from "react";
-import { Header, StudenList } from "./components/index";
+import { Header, StudenList, AddForm } from "./components/index";
 import "./App.css";
 
 function App() {
-  const [students, setStudent] = useState([
-    { id: 1, name: "ง้อง" },
-    { id: 2, name: "โจโจ้" },
-    { id: 3, name: "โจ้จริง" },
-  ]);
+  const [students, setStudent] = useState([]);
 
   const deleteStudent = (id) => {
     setStudent(students.filter((value) => value.id !== id));
@@ -17,6 +13,7 @@ function App() {
     <div className="container">
       <Header title="Home" />
       <main>
+        <AddForm students={students} setStudent={setStudent} />
         <StudenList students={students} deleteStudent={deleteStudent} />
       </main>
     </div>

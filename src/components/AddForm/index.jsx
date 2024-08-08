@@ -1,0 +1,43 @@
+import { useState } from "react";
+import "./AddForm.css";
+
+export default function AddForm({ students, setStudent }) {
+  const [name, setName] = useState("");
+  const [gender, setGender] = useState("male");
+
+  const saveStudent = (e) => {
+    e.preventDefault();
+    if (!name) {
+      alert("กรุณาป้อนข้อมูลด้วยครับ");
+    } else {
+      const newStudent = {
+        id: Math.floor(Math.random() * 1000),
+        name: name,
+        gender: gender,
+      };
+      setStudent([...students, newStudent]);
+      setName("");
+    }
+  };
+
+  return (
+    <section className="container">
+      <form onSubmit={saveStudent}>
+        <label>ชื่อนักเรียน</label>
+        <input
+          type="text"
+          name="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <select value={gender} onChange={(e) => setGender(e.target.value)}>
+          <option value="male">ชาย</option>
+          <option value="female">หญิง</option>
+        </select>
+        <button type="submit" className="btn-add">
+          บันทึก
+        </button>
+      </form>
+    </section>
+  );
+}

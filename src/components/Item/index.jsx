@@ -1,7 +1,9 @@
+import "./Item.css";
+
 export default function Item({ data, deleteStudent }) {
   return (
     <>
-      <li>
+      <li className={data.gender}>
         <p>
           {data.id} - {data.name}
         </p>
