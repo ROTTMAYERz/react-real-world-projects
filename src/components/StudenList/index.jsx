@@ -39,7 +39,12 @@ export default function StudenList() {
       <ul>
         <div className="header">
           <h1>จำนวนนักเรียน ({students.length})</h1>
-          <button onClick={() => setShow(!show)}>สลับ</button>
+          <button
+            style={{ background: show ? "purple" : "green" }}
+            onClick={() => setShow(!show)}
+          >
+            {show ? "ซ่อน" : "แสดง"}
+          </button>
         </div>
         {show &&
           students.map((value, index) => (

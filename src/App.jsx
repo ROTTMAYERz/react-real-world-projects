@@ -1,4 +1,4 @@
-import { Header, StudenList } from "./components/Index";
+import { Header, StudenList } from "./components/index";
 import "./App.css";
 
 function App() {
